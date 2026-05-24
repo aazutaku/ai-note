@@ -1,6 +1,6 @@
 # context-switch-logbook
 
-> Claude Codeがプロジェクトやタスクの文脈（コンテキスト）を切り替えた際、またはユーザーが明示的に切替コマンドを呼び出した際に自動で発動します。キーワード例: "プロジェクト変更", "タスク切替", "文脈移動", "/context-switch-logbook"。
+> エージェントや作業ブランチ、タスクの切り替え時にこのSkillを発動し、切り替え元・先・理由メモを記録します。context switch, branch change, agent switch などのキーワードや明示呼び出しで発動します。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Claude Code** 向けに最適化したものです。
 

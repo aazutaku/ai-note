@@ -1,102 +1,112 @@
 import argparse
+import json
 import os
-import sys
 from datetime import datetime
-from typing import List, Optional
+from typing import List, Dict, Optional
 
-LOG_DIR = os.path.expanduser("~/.claude/skills/context-switch-logbook/")
-LOG_FILE = os.path.join(LOG_DIR, "context_switch_log.txt")
+LOG_DIR = os.path.expanduser('.claude/skills/context-switch-logbook')
+LOG_FILE = os.path.join(LOG_DIR, 'logbook.jsonl')
 
 
 def ensure_log_dir():
-    try:
-        os.makedirs(LOG_DIR, exist_ok=True)
-    except Exception as e:
-        print(f"[ERROR] ログディレクトリ作成失敗: {e}", file=sys.stderr)
-        sys.exit(1)
+    if not os.path.exists(LOG_DIR):
+        os.makedirs(LOG_DIR)
 
 
-def log_context_switch(reason: str):
+def log_context_switch(from_ctx: str, to_ctx: str, reason: str) -> None:
     ensure_log_dir()
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    entry = f"[{now}] {reason.strip()}\n"
-    try:
-        with open(LOG_FILE, "a", encoding="utf-8") as f:
-            f.write(entry)
-    except Exception as e:
-        print(f"[ERROR] ログ書き込み失敗: {e}", file=sys.stderr)
-        sys.exit(1)
+    entry = {
+        'timestamp': datetime.now().isoformat(timespec='seconds'),
+        'from': from_ctx,
+        'to': to_ctx,
+        'reason': reason
+    }
+    with open(LOG_FILE, 'a', encoding='utf-8') as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + '\n')
 
 
-def list_logs(limit: Optional[int] = None):
-    try:
-        with open(LOG_FILE, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-            if limit:
-                lines = lines[-limit:]
-            for line in lines:
-                print(line.rstrip())
-    except FileNotFoundError:
-        print("[INFO] ログファイルがまだ作成されていません。")
-    except Exception as e:
-        print(f"[ERROR] ログ読み込み失敗: {e}", file=sys.stderr)
-        sys.exit(1)
+def load_log_entries() -> List[Dict]:
+    if not os.path.exists(LOG_FILE):
+        return []
+    with open(LOG_FILE, 'r', encoding='utf-8') as f:
+        return [json.loads(line) for line in f if line.strip()]
 
 
-def summary_logs():
-    try:
-        with open(LOG_FILE, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-        total = len(lines)
-        contexts = {}
-        for line in lines:
-            if "] " in line:
-                _, rest = line.split("] ", 1)
-                key = rest.split("から", 1)[0] if "から" in rest else rest.split("へ", 1)[0]
-                key = key.strip()
-                if key:
-                    contexts[key] = contexts.get(key, 0) + 1
-        print(f"合計記録数: {total}")
-        print("文脈切替回数 (上位5件):")
-        for k, v in sorted(contexts.items(), key=lambda x: x[1], reverse=True)[:5]:
-            print(f"  {k}: {v}回")
-    except FileNotFoundError:
-        print("[INFO] ログファイルがまだ作成されていません。")
-    except Exception as e:
-        print(f"[ERROR] サマリー取得失敗: {e}", file=sys.stderr)
-        sys.exit(1)
+def list_logs(limit: Optional[int] = None) -> None:
+    entries = load_log_entries()
+    if limit:
+        entries = entries[-limit:]
+    for entry in entries:
+        print(f"[{entry['timestamp']}] from: {entry['from']} -> to: {entry['to']} | reason: {entry['reason']}")
+
+
+def summary_logs() -> None:
+    entries = load_log_entries()
+    if not entries:
+        print('No context switch logs found.')
+        return
+    print(f"Total switches: {len(entries)}")
+    switches = {}
+    for entry in entries:
+        key = f"{entry['from']} -> {entry['to']}"
+        switches[key] = switches.get(key, 0) + 1
+    print('--- Switch summary ---')
+    for k, v in sorted(switches.items(), key=lambda x: -x[1]):
+        print(f"{k}: {v} times")
+    print('\nRecent reasons:')
+    for entry in entries[-5:]:
+        print(f"- {entry['reason']} ({entry['timestamp']})")
+
+
+def delete_last_entry() -> None:
+    entries = load_log_entries()
+    if not entries:
+        print('No entries to delete.')
+        return
+    removed = entries.pop()
+    with open(LOG_FILE, 'w', encoding='utf-8') as f:
+        for entry in entries:
+            f.write(json.dumps(entry, ensure_ascii=False) + '\n')
+    print(f"Deleted last entry: from {removed['from']} to {removed['to']} at {removed['timestamp']}")
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="文脈切替ログブック: context-switch-logbook")
-    subparsers = parser.add_subparsers(dest="command", required=True)
+    parser = argparse.ArgumentParser(description='Context Switch Logbook CLI')
+    subparsers = parser.add_subparsers(dest='command')
 
-    # logサブコマンド
-    p_log = subparsers.add_parser("log", help="文脈切替を記録する")
-    p_log.add_argument("reason", type=str, help="切替理由・経緯 (日本語で簡潔に)")
+    # log command
+    log_parser = subparsers.add_parser('log', help='Log a context switch')
+    log_parser.add_argument('--from', dest='from_ctx', required=True, help='Context you switched from')
+    log_parser.add_argument('--to', dest='to_ctx', required=True, help='Context you switched to')
+    log_parser.add_argument('--reason', required=True, help='Reason for the switch')
 
-    # listサブコマンド
-    p_list = subparsers.add_parser("list", help="ログを一覧表示")
-    p_list.add_argument("-n", "--limit", type=int, default=None, help="最新n件のみ表示")
+    # list command
+    list_parser = subparsers.add_parser('list', help='List context switch logs')
+    list_parser.add_argument('--limit', type=int, help='Show only the last N entries')
 
-    # summaryサブコマンド
-    subparsers.add_parser("summary", help="文脈切替のサマリーを表示")
+    # summary command
+    subparsers.add_parser('summary', help='Show summary of switches')
+
+    # delete-last command
+    subparsers.add_parser('delete-last', help='Delete the last log entry')
 
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    if args.command == "log":
-        log_context_switch(args.reason)
-        print("[OK] 文脈切替が記録されました。")
-    elif args.command == "list":
+    if args.command == 'log':
+        log_context_switch(args.from_ctx, args.to_ctx, args.reason)
+        print(f"Logged: from '{args.from_ctx}' to '{args.to_ctx}' | reason: {args.reason}")
+    elif args.command == 'list':
         list_logs(args.limit)
-    elif args.command == "summary":
+    elif args.command == 'summary':
         summary_logs()
+    elif args.command == 'delete-last':
+        delete_last_entry()
     else:
-        print("[ERROR] 未知のコマンドです。", file=sys.stderr)
-        sys.exit(1)
+        print('No command specified. Use --help for usage.')
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     main()

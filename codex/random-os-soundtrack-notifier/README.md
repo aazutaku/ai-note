@@ -1,13 +1,13 @@
 # random-os-soundtrack-notifier
 
-> ターミナルやエディタの起動時、または /skills コマンドや skill名で明示的に呼び出された際に、完全ランダムな“今日の作業BGM”をOS通知で1回だけ表示します。通知内容やタイミングが毎回異なることが特徴です。
+> ターミナルやエディタの起動時、または /skills menu など明示呼び出し時に、作業開始BGMとしてバカバカしい楽曲タイトルをOS通知でランダム表示。trigger: always, semantic-or-explicit。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Codex** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/random_os_soundtrack_notifier.py` - random-os-soundtrack-notifier: あなたの今日の作業BGMをランダム通知
+- `scripts/random_os_soundtrack_notifier.py` - random-os-soundtrack-notifier: 理不尽なBGM通知スキル
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

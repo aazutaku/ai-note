@@ -1,31 +1,33 @@
 ---
 name: random-os-soundtrack-notifier
-description: ターミナルやエディタの起動時、または /skills コマンドや skill名で明示的に呼び出された際に、完全ランダムな“今日の作業BGM”をOS通知で1回だけ表示します。通知内容やタイミングが毎回異なることが特徴です。
+description: ターミナルやエディタの起動時、または /skills menu など明示呼び出し時に、作業開始BGMとしてバカバカしい楽曲タイトルをOS通知でランダム表示。trigger: always, semantic-or-explicit。
 ---
 
 # 機能概要
-random-os-soundtrack-notifier は、あなたがターミナルやエディタを起動した瞬間や、/skills menu などで明示的に呼び出した時に、“今日の作業BGM”を完全ランダムでOS通知として提案します。BGMは「なつかしのファミコン効果音」「宇宙戦艦発進テーマ」「朝礼のチャイム」など、作業に全く関係ないタイトルばかり。開発現場に無駄な演出を加え、集中力をかき乱すための本気のジョークSkillです。実際のBGM再生や外部API呼び出しは一切行わず、通知のみで完結します。
+このSkillは、ターミナルやエディタを起動した瞬間に「今日の作業BGM」として、思わず二度見するようなバカバカしい楽曲タイトルをOS通知で提案します。選曲は完全ランダムで、ジャンルも統一感がなく、『情熱大陸』『運命』『初音ミクの消失』『ドラクエ戦闘曲』『朝のラジオ体操』など、思わず「本当にこれ流すの？」と突っ込みたくなるラインナップです。実際に音楽が流れることはありませんが、毎日の作業開始時にちょっとした笑いと意外性を提供します。
 
 # 使い方
-- 明示的呼び出し例: `/skills random-os-soundtrack-notifier` または `$ random-os-soundtrack-notifier`
-- 暗黙発動: 「ターミナル起動」「エディタ起動」「/skills menu」などのイベント時に自動で1回だけ発動
-- 通知は1回のみ表示され、連続発動はしません
+- 明示的な呼び出し例: `/skills menu` または `random-os-soundtrack-notifier` のメンション
+- 暗黙発動キーワード例: 「エディタ起動」「ターミナル開始」「作業開始」などのタイミングで自動発動
 
 # 出力例
-```terminal
-[OS通知] あなたの今日の作業BGM: 宇宙戦艦発進テーマ
-[OS通知] あなたの今日の作業BGM: なつかしのファミコン効果音
-[OS通知] あなたの今日の作業BGM: 朝礼のチャイム
-[OS通知] あなたの今日の作業BGM: 伝説のRPGセーブポイント
-[OS通知] あなたの今日の作業BGM: 早朝の商店街BGM
+```
+[通知] 今日の作業BGM: 『情熱大陸』
+[通知] 今日の作業BGM: 『初音ミクの消失』
+[通知] 今日の作業BGM: 『運命（ベートーヴェン）』
+[通知] 今日の作業BGM: 『ドラクエ戦闘曲』
+[通知] 今日の作業BGM: 『朝のラジオ体操 第一』
+[通知] 今日の作業BGM: 『NHKニュースのテーマ』
 ```
 
 # 注意点
-- BGMはタイトルのみで、実際の音楽再生やファイル保存はありません
-- 毎回ランダムなタイトルが選ばれますが、同じセッション内で重複する可能性もあります
-- OS通知機能は Linux (notify-send), macOS (osascript), Windows (win10toast) に対応
+- 実際に音楽は再生されません。通知のみです。
+- OSの通知機能（macOS: `osascript`, Linux: `notify-send`, Windows: `toast`等）に依存します。
+- 通知が出ない場合はOS側の通知設定をご確認ください。
+- 楽曲リストはスクリプト内で編集可能です。
 
 # 参考資料
-- references/design_notes.md 参照
-- OS通知API: https://docs.python.org/ja/3/library/subprocess.html, https://github.com/jithurjacob/Windows-10-Toast-Notifications
-- Skill設計方針や通知実装の詳細は references/design_notes.md を参照してください
+- references/design_notes.md
+- https://docs.python.org/ja/3/library/subprocess.html
+- https://github.com/notify2/notify2 (Linux通知)
+- https://docs.microsoft.com/ja-jp/windows/uwp/design/shell/tiles-and-notifications/

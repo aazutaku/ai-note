@@ -1,13 +1,13 @@
 # random-os-soundtrack-notifier
 
-> ターミナルやエディタの起動時、または作業開始を示すキーワード（例: start, open, launch, begin, edit, code）が検出された際に自動発動し、OSの通知で“今日の作業BGM”を毎回ランダムに提案します。通知は1セッションにつき1回のみ表示されます。
+> ターミナルやエディタの起動時、または作業開始を示唆するキーワード（例: start, open, begin, code, terminal）が検出された際に、AntigravityがこのSkillを自動発動します。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Antigravity** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/random_os_soundtrack_notifier.py` - Check if notification has already been sent in this session.
+- `scripts/random_os_soundtrack_notifier.py` - 今日の作業BGMをランダム通知
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

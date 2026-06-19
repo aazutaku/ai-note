@@ -1,16 +1,22 @@
 # 概要
-random-os-soundtrack-notifierは、開発環境の起動時に“無駄なBGMタイトル”を通知することで、作業の雰囲気や集中力にユーモラスな変化を与えることを目的としています。通知はBGMタイトルのみで、実際の音楽再生や外部API連携は行いません。
+random-os-soundtrack-notifierは、作業開始時にOS通知で“今日の作業BGM”をランダムに提案し、日常のルーチンにユーモアと意外性を加えるためのSkillです。通知内容は実際に再生されず、ユーザーの集中や作業フローを妨げません。
 
 # 公式ドキュメント抜粋
-Windowsでは`win10toast`、macOSでは`osascript`、Linuxでは`notify-send`を利用し、各OSの標準通知APIでメッセージを表示します。これにより追加の外部サービスやネットワーク通信は不要です。
+- [Python subprocess](https://docs.python.org/3/library/subprocess.html)
+- [macOS osascript](https://ss64.com/osx/osascript.html)
+- [Linux notify-send](https://specifications.freedesktop.org/notification-spec/latest/)
+- [win10toast](https://pypi.org/project/win10toast/)
 
 # 利用例
-- ターミナルやVSCodeなどのエディタ起動時に自動でBGMタイトルが通知される
-- CLIから`python random_os_soundtrack_notifier.py notify`で手動通知も可能
-- `list`サブコマンドで全BGMタイトルを確認可能
+- ターミナルやエディタの起動時に自動発動し、BGMタイトルを通知。
+- CLIから `python random_os_soundtrack_notifier.py notify` で手動実行も可能。
+- 履歴やランキング表示で過去の通知を振り返る用途も。
 
 # 注意点
-通知は1セッションにつき1回のみ。BGM再生や外部API呼び出しは一切行いません。通知が不要な場合は`clear`サブコマンドでフラグをリセット可能です。
+- OS通知APIの制約により、通知が表示されない場合があります。
+- Windowsはwin10toastが必要です（pip install win10toast）。
+- ログファイルはホームディレクトリに保存されます。
 
 # 設計方針
-シンプルなローカル完結型設計とし、冗長な外部依存を避けています。通知内容は毎回ランダム選出され、作業の“本気の無駄演出”を実現しています。
+- 外部APIやネットワークアクセスを排除し、セキュリティと安定性を重視。
+- ユーザーの作業を妨げない“理不尽なエンタメ”を追求しています。

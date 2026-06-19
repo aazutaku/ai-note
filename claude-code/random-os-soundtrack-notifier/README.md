@@ -1,13 +1,13 @@
 # random-os-soundtrack-notifier
 
-> ターミナルやエディタの起動時、または /random-os-soundtrack-notifier の明示呼び出し時に、完全ランダムな“今日の作業BGM”タイトルをOS通知で1回だけ表示します。通知は毎回異なる内容で、BGM実再生や外部APIは利用しません。
+> ターミナルやエディタの起動時、または /random-os-soundtrack-notifier コマンド実行時に、今日の作業BGMとしてバカバカしいランダム楽曲名をOS通知で提案します。発動条件: 起動/明示呼び出し/semantic trigger。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Claude Code** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/random_os_soundtrack_notifier.py` - [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType
+- `scripts/random_os_soundtrack_notifier.py` - random-os-soundtrack-notifier: 今日の作業BGMを理不尽に通知
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

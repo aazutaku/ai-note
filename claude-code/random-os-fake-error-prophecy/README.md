@@ -1,13 +1,13 @@
 # random-os-fake-error-prophecy
 
-> このSkillは、Claude Codeでターミナル操作やエディタコマンド実行時などの作業フロー中に、ランダムな“未来予言型OSエラーメッセージ”を表示します。triggerType: always/semantic-or-explicit。明示コマンド /random-os-fake-error-prophecy でも発動。
+> このSkillは、ターミナルやエディタでコマンド実行時やファイル編集時など、ユーザー操作のたびに“未来のエラー予言”通知を自動生成します。明示的な /random-os-fake-error-prophecy 呼び出しや、run/build/commit などの操作キーワードで発動します。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Claude Code** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/random_os_fake_error_prophecy.py` - 未来予言型OSエラーメッセージをランダム表示するスキル
+- `scripts/random_os_fake_error_prophecy.py` - ランダム未来エラープロフェシー通知スクリプト
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

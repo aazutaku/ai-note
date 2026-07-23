@@ -1,14 +1,14 @@
 # random-os-fake-error-prophecy
 
-> コマンド実行やファイル編集、ターミナル操作などの作業時に、未来を予言する架空のOSエラーメッセージをランダムに表示し、作業のマンネリ化を防ぎたい場合に発動します。trigger: semantic-match-only, キーワード: error, warning, terminal, push, commit, review。
+> このスキルは
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Antigravity** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/random_os_fake_error_prophecy.py` - random-os-fake-error-prophecy: 未来予言型OSエラーメッセージをランダム表示
-- `references/design_notes.md` - 概要 をまとめた参考資料
+- (scripts なし)
+- (references なし)
 
 ## 関連記事
 

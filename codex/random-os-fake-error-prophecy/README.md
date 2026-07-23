@@ -1,13 +1,13 @@
 # random-os-fake-error-prophecy
 
-> このSkillは、ターミナルやエディタでコマンド実行やファイル編集などの操作が検知された際に、ランダムな未来予言風の偽OSエラーメッセージを出力します。trigger: semantic-or-explicit, キーワード: エラー/警告/未来/予言。
+> コマンド実行やファイル編集などの操作時に、'エラー'や'警告'など未来のトラブルを予言するメッセージをランダムに通知します。triggerType: always/semantic-or-explicit、キーワード例: error, warning, prophecy。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Codex** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/random_os_fake_error_prophecy.py` - 未来予言風の偽OSエラーメッセージをランダム表示するスクリプト
+- `scripts/random_os_fake_error_prophecy.py` - random-os-fake-error-prophecy: 未来のトラブルを予言するジョーク通知スクリプト
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

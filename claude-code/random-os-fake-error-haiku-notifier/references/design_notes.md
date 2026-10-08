@@ -1,21 +1,16 @@
 # 概要
-本Skillは、エラー発生時に開発者へ和風のユーモアを提供するための通知演出ツールです。技術的なエラー内容を一切参照せず、俳句のみをランダム表示することで、気分転換やストレス軽減を狙っています。
+本Skillは、作業者の気分転換や遊び心を刺激するため、完全に架空のOSエラーを五・七・五の俳句形式で通知するものです。通知内容は毎回異なり、技術用語と季語を組み合わせて詩的な雰囲気を演出します。
 
 # 公式ドキュメント抜粋
-- Pythonデスクトップ通知: [notify2 (Linux)](https://github.com/caronc/apprise)
-- [win10toast (Windows)](https://github.com/jithurjacob/Windows-10-Toast-Notifications)
-- macOS通知: osascript経由でAppleScript利用
+通知にはPythonの `plyer` ライブラリを利用し、クロスプラットフォームでデスクトップ通知が可能です。`plyer`が未導入の場合は標準出力にフォールバックします。
 
 # 利用例
-- ターミナルで `python haiku_notifier.py log` を実行すると、即座に俳句通知が表示されます。
-- エラー発生時にSkill連携から自動で呼び出す運用も可能です。
+- 明示呼び出し: `python random_os_fake_error_haiku_notifier.py notify`
+- 定期通知: `python random_os_fake_error_haiku_notifier.py periodic --interval 120`
+- キーワード監視: `python random_os_fake_error_haiku_notifier.py monitor --keywords error fail`
 
 # 注意点
-- 通知内容はエラーとは無関係です。
-- 通知の自動消去はOS依存で、macOSでは明示的な消去は不可です。
-- Web IDEやリモート環境では通知が表示されない場合があります。
+本Skillはジョーク用途専用であり、実際のエラー検知や障害報告には一切利用できません。通知頻度や発動条件は作業の妨げにならないよう調整してください。
 
 # 設計方針
-- シンプルかつOS横断的な通知実装
-- 俳句リストは拡張可能
-- ログ保存やエラー内容との連携はあえて行わず、混乱と和みを優先
+五・七・五の音数に近づけるため語彙リストとテンプレートを複数用意し、ランダム性と詩的表現の両立を目指しました。通知APIはローカル限定で、外部送信やデータ保存は行いません。

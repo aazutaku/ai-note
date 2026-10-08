@@ -1,13 +1,13 @@
 # random-os-fake-error-haiku-notifier
 
-> Claude Codeは、エラー発生時や例外キャッチ時、または明示的に /random-os-fake-error-haiku-notifier が呼ばれた際にこのSkillを発動します。triggerType: always。キーワード: error, exception, fail, bug。
+> このSkillは、コマンド実行や作業中に“エラー”や“失敗”などのキーワードを検知、または明示的な /random-os-fake-error-haiku-notifier 呼び出し時に、五・七・五の俳句形式で内容が毎回異なるランダムな偽OSエラーハイクを通知します。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Claude Code** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/haiku_notifier.py` - OS Error Haiku Notifier
+- `scripts/random_os_fake_error_haiku_notifier.py` - random-os-fake-error-haiku-notifier
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

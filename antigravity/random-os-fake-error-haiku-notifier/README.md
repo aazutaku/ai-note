@@ -1,13 +1,13 @@
 # random-os-fake-error-haiku-notifier
 
-> エラー発生・例外検知・ビルド失敗・テストエラー・クラッシュ・stderr出力などのキーワードやイベントを検出した際に発動し、俳句形式の通知を表示します。
+> コマンド実行や作業中に、'エラー'や'通知'などのキーワードが含まれる文脈で、五・七・五の俳句形式によるランダムなOS風エラーメッセージをデスクトップやターミナルに通知する際に発動します。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Antigravity** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/haiku_notifier.py` - Read lines from stdin (assumed to be piped from stderr), and send notification on each lin
+- `scripts/haiku_error_notifier.py` - Random OS Fake Error Haiku Notifier
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

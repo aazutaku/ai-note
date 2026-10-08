@@ -1,20 +1,20 @@
 # 概要
-本Skillは、エラー検知時に開発者の気分転換・和み・話題作りを目的として、完全ランダムな和風俳句をOS通知で表示します。エラー内容には一切依存せず、通知の演出性を重視しています。
+random-os-fake-error-haiku-notifierは、CLIや作業ログに現れるエラー/バグ関連ワードをトリガーとして、俳句形式のジョーク通知を行うSkillです。技術用語と季語を組み合わせることで、開発現場にユーモアと癒しをもたらします。
 
 # 公式ドキュメント抜粋
-- Python通知ライブラリ `plyer` : https://plyer.readthedocs.io/en/latest/
-- macOS: `osascript` で通知、Linux: `notify-send`、Windows: PowerShell経由でトースト通知
+- [notify-send (Linux)](https://specifications.freedesktop.org/notification-spec/latest/)
+- [osascript (macOS)](https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html)
 
 # 利用例
-- `python haiku_notifier.py monitor < error.log` でエラー出力を監視し、エラー検知時に俳句通知
-- `/skills menu` や `notify` サブコマンドで即時俳句通知
+- `cat error.log | python random_os_fake_error_haiku_notifier.py monitor --mode both`
+- `python random_os_fake_error_haiku_notifier.py run --mode desktop`
 
 # 注意点
-- 通知内容は俳句のみで、エラー内容や詳細は一切通知されません
-- OS通知APIの仕様により、環境によっては通知が表示されない場合があります
-- ログ保存や履歴機能はありません
+- 実際の障害監視や運用通知には使用しないこと。
+- Windowsではデスクトップ通知非対応（ターミナル出力のみ）。
+- 通知が多すぎる場合は--freqや--intervalで調整可能。
 
 # 設計方針
-- 俳句リストは拡張可能
-- 複数OS対応のため、plyer優先・なければOS標準APIを利用
-- 開発現場に“和風カオス”な演出をもたらすことを主眼としています
+- 五・七・五の構造を厳守しつつ、毎回異なる俳句を生成。
+- OSごとに最適な通知APIを選択。
+- Skill本体は100行超のPythonスクリプトでCLI/監視モード両対応。

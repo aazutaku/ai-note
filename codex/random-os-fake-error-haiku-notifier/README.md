@@ -1,13 +1,13 @@
 # random-os-fake-error-haiku-notifier
 
-> ターミナルやエディタ上でエラーや例外発生時、または /skills menu など明示コマンド時に、完全ランダムな和風エラー俳句をデスクトップ通知で表示します。通知・演出・OS連携用途に適します。
+> このSkillは、コマンド実行や作業中に「エラー」「失敗」「バグ」などのキーワードを検知した際や、/skills menu など明示的な呼び出し時に、五・七・五の俳句形式でランダムな“OS風エラーハイク通知”を生成・表示します。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Codex** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/haiku_notifier.py` - Cross-platform notification.
+- `scripts/random_os_fake_error_haiku_notifier.py` - Random OS Fake Error Haiku Notifier
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

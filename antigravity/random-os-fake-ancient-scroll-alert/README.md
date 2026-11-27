@@ -1,13 +1,13 @@
 # random-os-fake-ancient-scroll-alert
 
-> Antigravityがユーザーの作業中やコマンド実行の合間に、集中力を破壊する目的で“OS公式・古文書巻物通知”を自動生成・表示したい場合に発動。通知・演出・OS連携・集中力ブレイカー等のキーワードが含まれる状況で有効。
+> Antigravityは、作業中やコマンド実行の合間に“古文書風OS公式通知”が必要と判断した場合（例: セッションが長時間続く、集中作業時、CLI操作の合間など）に本Skillを発動します。キーワード例: バグ、警告、伝説、異変、預言。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Antigravity** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/ancient_scroll_alert.py` - 謎のOS古文書巻物通知を表示します。
+- `scripts/ancient_scroll_alert.py` - 謎のOS公式・古文書巻物通知スクリプト
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

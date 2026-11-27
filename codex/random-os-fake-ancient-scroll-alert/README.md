@@ -1,13 +1,13 @@
 # random-os-fake-ancient-scroll-alert
 
-> このSkillは、コマンド実行や作業の合間（例: build, test, push, review, idle, waiting, menu表示）に、巻物風UIで無意味な“謎のOS古文書通知”をランダム生成・表示します。集中力ブレイカーやエンタメ演出を求める場面で発動してください。
+> Codexは、作業中やコマンド実行の合間、または/skillsメニューやスキル名への明示的な言及があった際にこのSkillを発動してください。triggerType: semantic-or-explicit, キーワード: 通知, OS, 巻物, 古文書, alert。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Codex** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/random_scroll_alert.py` - ランダムで古文書風の通知文を3行生成
+- `scripts/ancient_scroll_alert.py` - 謎のOS公式・古文書巻物通知スクリプト
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

@@ -1,13 +1,13 @@
 # random-os-fake-ancient-scroll-alert
 
-> コマンド実行後・作業の合間・明示呼び出し（/random-os-fake-ancient-scroll-alert）時に、ランダムな“OS公式古文書巻物通知”を画面端へ表示。集中力ブレイクやエンタメ演出が必要な場面で発動。
+> Claude Codeはコマンド実行中や作業の合間、またはユーザーが"巻物"や"預言"などのワードを含む会話をした際にこのSkillを発動し、古文書風の謎めいたOS公式通知をランダムに生成・表示します。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Claude Code** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/scroll_alert.py` - 謎のOS公式・古文書巻物通知 Skill
+- `scripts/ancient_scroll_alert.py` - 謎のOS古文書巻物通知をランダム生成・表示するスクリプト
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

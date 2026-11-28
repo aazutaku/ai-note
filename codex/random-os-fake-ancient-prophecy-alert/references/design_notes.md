@@ -1,21 +1,21 @@
 # 概要
-本Skillは、開発現場に“古代OS預言”というユーモアを即時注入するための通知演出ツールです。通知内容は毎回ランダム生成され、ターミナル・デスクトップ両対応。副作用ゼロで安全です。
+本Skillは、開発現場の単調さを打破するため、完全にネタ枠の“古代預言通知”をOSの通知機能で演出します。実用性はありませんが、チームの雰囲気作りや気分転換に役立ちます。
 
 # 公式ドキュメント抜粋
-- Python標準random: https://docs.python.org/ja/3/library/random.html
-- notify-send (Linux): https://specifications.freedesktop.org/notification-spec/latest/
-- osascript (macOS): https://ss64.com/osx/osascript.html
-- win10toast (Windows): https://pypi.org/project/win10toast/
+- Python subprocess: https://docs.python.org/3/library/subprocess.html
+- notify-send (Linux): https://wiki.archlinux.jp/index.php/Desktop_notifications
+- osascript (macOS): https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/
 
 # 利用例
-- `/skills random-os-fake-ancient-prophecy-alert` で即時発動
-- `python prophecy_alert.py run --interval 300 --desktop` で5分ごとに通知
+- コマンド実行後に自動発動
+- `/skills random-os-fake-ancient-prophecy-alert alert` で即時通知
+- `list`/`summary`で履歴を確認
 
 # 注意点
-- データ損失や副作用は一切ありません
-- 通知頻度・回数はCLI引数で柔軟に調整可能
+- 通知は完全に架空で実用性はありません
+- OS通知機能が動作しない場合は標準出力に表示
+- 履歴はホームディレクトリの隠しファイルに保存
 
 # 設計方針
-- どのOS環境でも動作するよう通知APIを分岐実装
-- 予言テンプレートは拡張容易なリスト構造
-- 明示/暗黙トリガー両対応で多様な現場に適応
+- OSごとに最適な通知APIを選択し、環境非依存性を重視
+- 毎回異なる預言を生成し、履歴記録・参照も可能に設計

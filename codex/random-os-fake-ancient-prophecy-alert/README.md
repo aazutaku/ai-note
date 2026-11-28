@@ -1,13 +1,13 @@
 # random-os-fake-ancient-prophecy-alert
 
-> Codexは、ユーザーがコマンド実行や作業中に“古代OS予言通知”で場を和ませたい場合、または/skillsメニューやスキル名の明示呼び出しがあった際に本Skillを発動してください。発動キーワード例: 予言, 通知, エンタメ, 中断, alert。
+> このSkillは、Codexがコマンド実行や作業中の合間に、または/skillsメニューやスキル名への明示的な呼び出し時に、謎めいた“OS古代預言通知”を即座に発動します。通知・演出・OS連携用途で利用されます。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Codex** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/prophecy_alert.py` - OS Ancient Prophecy Alert: 古代OS予言通知スクリプト
+- `scripts/random_os_fake_ancient_prophecy_alert.py` - random-os-fake-ancient-prophecy-alert: OS預言通知スキル
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

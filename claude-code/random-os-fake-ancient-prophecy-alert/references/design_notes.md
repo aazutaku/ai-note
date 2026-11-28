@@ -1,19 +1,21 @@
 # 概要
-本Skillは、開発現場に“古代OSの謎予言”という非日常的な演出を加えることで、作業の合間に笑いや気分転換を提供することを目的としています。通知は完全に無害で、実業務やデータに影響を与えません。
+本Skillは、開発現場に遊び心と非日常体験をもたらすため、完全にジョーク用途として設計されています。意味深な“預言”が、作業の合間に通知として現れます。
 
 # 公式ドキュメント抜粋
-通知APIにはPythonの[plyer](https://pypi.org/project/plyer/)を利用。plyerはクロスプラットフォームでデスクトップ通知を実現できるため、Windows/Mac/Linuxいずれでも動作します。
+- Python subprocess: https://docs.python.org/3/library/subprocess.html
+- Python random: https://docs.python.org/3/library/random.html
 
 # 利用例
-- 明示呼び出し: `python prophecy_alert.py once`
-- コマンド出力監視: `your_command | python prophecy_alert.py monitor`
-- ランダム通知: `python prophecy_alert.py random --min 120 --max 300`
+- ターミナルで `python ancient_prophecy_alert.py alert` を実行
+- 明示呼び出し `/random-os-fake-ancient-prophecy-alert`
+- 自動発動時は特定キーワードで通知
 
 # 注意点
-- plyer未インストール時は標準出力のみ。
-- 予言内容は完全に架空で、実際のOSやセキュリティには一切関係ありません。
+- 実用的な警告やエラー通知は一切含みません。
+- 通知はローカル表示のみ。外部送信や保存は行いません。
+- Linux/macOS/Windowsで動作しますが、Windowsはwin10toastが必要です。
 
 # 設計方針
-- 予言テンプレートと変数を分離し、毎回異なる通知を生成。
-- 標準入力監視・ランダム発動・明示呼び出しの3モードを用意。
-- plyerが使えない場合も必ず標準出力で通知。
+- ランダム生成の預言文で毎回異なる体験を提供
+- 他の通知や作業と干渉しないよう配慮
+- 明示・暗黙両方の発動に対応

@@ -1,13 +1,13 @@
 # random-os-fake-ancient-prophecy-alert
 
-> 作業中やコマンド実行後に、キーワード（build, run, test, deploy, commit, push, install, update, error, warning, success）を検知した時、または明示的な呼び出し時に、古代OS風の予言通知をランダムに生成・表示します。
+> このSkillは、ターミナル操作やコマンド実行、ファイル編集などの合間に、"預言"や"通知"といったキーワードを含む状況で自動発動します。また、/random-os-fake-ancient-prophecy-alert コマンドで明示的にも呼び出せます。
 
 このSkillは [ai-note.tech](https://ai-note.tech) の Skill 提案媒体で設計され、**Claude Code** 向けに最適化したものです。
 
 ## ファイル構成
 
 - `SKILL.md` - Skill本体 (frontmatter + 指示)
-- `scripts/prophecy_alert.py` - 謎のOS古代予言通知をランダムに表示
+- `scripts/ancient_prophecy_alert.py` - 古代OS預言通知スクリプト
 - `references/design_notes.md` - 概要 をまとめた参考資料
 
 ## 関連記事

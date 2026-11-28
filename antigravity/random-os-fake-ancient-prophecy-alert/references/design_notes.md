@@ -1,20 +1,19 @@
 # 概要
-このSkillは、開発現場に遊び心とリフレッシュ効果をもたらすため、作業中に唐突かつ無害な“古代OS予言”を通知するものです。通知は完全に架空の内容で、実際のシステムエラーや警告とは無関係です。
+このSkillは、開発現場に遊び心と非日常感をもたらすことを目的とした演出系スキルです。完全な実用性よりも、通知演出の面白さ・多様性・干渉しない設計を重視しています。
 
 # 公式ドキュメント抜粋
-- Python random: https://docs.python.org/3/library/random.html
-- notify-send (Linux): https://wiki.archlinux.jp/index.php/Desktop_notifications
-- osascript (macOS): https://ss64.com/osx/osascript.html
-- win10toast (Windows): https://pypi.org/project/win10toast/
+OS通知にはmacOSのosascript、Linuxのnotify-send、Windowsのwin10toastを利用しています。各APIの詳細は以下を参照してください。
+- macOS: https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/
+- Linux: https://specifications.freedesktop.org/notification-spec/latest/
+- win10toast: https://pypi.org/project/win10toast/
 
 # 利用例
-- 長時間のビルドやテスト待機中に、突如謎めいた予言が表示され、開発者の集中力をリセット。
-- チーム開発での話題作りや、Slack等にログを流して遊ぶ用途にも活用可能。
+- チームの朝会や作業中の気分転換
+- コマンド実行直後のサプライズ通知
+- "預言"や"未来"などのキーワード出現時の演出
 
 # 注意点
-- 通知内容は完全ランダムで、実際のOSやファイル操作には一切影響しません。
-- ログファイルはユーザーホームに保存され、個人利用の範囲を想定しています。
+通知内容は保存されず、業務上の警告やエラーとは一切関係ありません。Linuxではnotify-sendコマンドのインストールが必要な場合があります。
 
 # 設計方針
-- 環境依存性を最小限に抑え、Linux/macOS/Windowsで動作可能な設計。
-- 予言テンプレートは拡張容易で、今後のバリエーション追加も容易です。
+通知内容は毎回ランダム生成され、他の通知や作業への干渉を最小化。CLIからも柔軟に呼び出せるよう設計しています。
